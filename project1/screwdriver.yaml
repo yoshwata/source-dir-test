@@ -1,28 +1,7 @@
 shared:
-  image: node:8
+  image: node:16
 jobs:
   main:
     requires: [ "~pr", "~commit" ]
-    settings:
-      slack:
-        channels:
-          - <@yoshwata>
-        statuses:
-          - SUCCESS
-          - FAILURE
-      email:
-        addresses:
-          - yoshwata@yahoo-corp.jp
-        statuses:
-          - SUCCESS
-          - FAILURE
     steps:
       - echo: echo 'foo'
-      - hellopwd: |
-          echo "Hello World!"
-          pwd
-      - notexecuted: echo "Not executed this step."
-      - teardown-cleanup: echo "Execute cleanup step."
-      - teardown-pwd: |
-          echo "Goodbye World!"
-          pwd
