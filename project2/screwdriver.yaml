@@ -1,6 +1,9 @@
 jobs:
   main:
-    image: node:16
-    requires: [ ~pr, ~commit ]
+    image: yoshwata/centos:1.0
+    requires: [~pr, ~commit]
+    environment:
+      SD_HAB_ENABLED: "false"
     steps:
-      - echo: echo hoge
+      - echo: echo $SD_GIT_WRAPPER
+      - git: $SD_GIT_WRAPPER "git version"
